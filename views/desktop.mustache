@@ -1,0 +1,131 @@
+<html>
+
+<head>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+
+</head>
+
+<body>
+    <div class="manage_wrapper">
+        <div class="nav_bar">
+
+            
+            <a class="nav" href="./api/logout">Log Out</a>
+        </div>
+        {{#display}}
+        <p><b>Welcome Back {{display}}</b></p>
+        {{/display}}
+        <h3>Create a Snippet</h3>
+        <form class="create_snippet" id='create_snippet_id' method='POST' action='./api/snippet'>
+            <input class="snippet_title" type="text" id='title' name="title" placeholder="Title" />
+            <textarea class="snippet_code" type="text" id='code' name="code" placeholder="Code" ></textarea>
+            <textarea class="snippet_note" type="text" id='note' name="note" placeholder="Note" ></textarea>
+            <input class="snippet_language" type="text" id='language' name="language" placeholder="Language" />
+            <input class="snippet_tag" type="text" id='tag' name="tag" placeholder="Tag" />
+            <button type="submit">Submit</button>
+        </form>
+        <h3>All of My Snippets</h3>
+         <form class="sort_by_user" id='sort_by_user' method='POST' action='./api/snippet/username'>
+            <button type="submit">Ziiiiiing</button>
+        </form>
+        <h3> Sort by Language</h3>
+        <form class="sort_by_language" id='sort_by_language' method='POST' action='./api/snippet/language'>
+            <select  class='language_select' name="language">
+                {{#result}}
+                {{#language}}
+                <option  value='{{.}}'>{{.}}</option>
+                {{/language}}
+                
+                {{/result}}
+                </select>
+                <button type="submit">Submit</button>
+            
+        </form>
+        
+        <h3>Sort By Tag</h3>
+        <form class="sort_by_tag" id='sort_by_tag' method='POST' action='./api/snippet/tag'>
+            <select class='tag_select' name="tag">
+                {{#result}}
+                {{#tag}}
+                <option value='{{.}}'>{{.}}</option>
+                {{/tag}}
+                
+                {{/result}}
+                </select>
+                <button type="submit">Submit</button>
+
+        </form>
+        <h3>ALL KNOWN SNIPPETS IN THE WORLD!!!!!</h3>
+        <div class="manage_gabs_wrapper">
+            
+                  {{#result}}
+            <div class="gab_container gab_home">
+                <p><b>title: {{title}}</b></p>
+                <p> code: {{code}}</p>
+                <p>note: {{note}}</p>
+                <p>language: {{language}}</p>
+                <p>tag: {{tag}}</p>
+            </div>
+            <form id="individual-snippet" method="GET" action="/api/snippet/{{id}}"> 
+                <button type="submit">Select</button>
+            </form>
+            {{/result}}
+
+        </div>
+    </div>
+    <script>
+        $('#create_snippet_id').on('submit', function (event) {
+            event.preventDefault();
+            var title = $('#title').val();
+            var code = $('#code').val();
+            var note = $('#note').val();
+            var language = $('#language').val();
+            var tag = $('#tag').val();
+
+            var promise = $.post('http://localhost:3000/api/snippet', { title: title, code: code, note: note, language: language, tag: tag });
+            promise.then(function (response) {
+                window.location.href = '/desktop';
+            })
+        });
+        // $('#sort_by_language').on('submit', function (event) {
+        //     event.preventDefault();
+       
+        //     var language = $('#language_select').val();
+         
+
+        //     var promise = $.post('http://localhost:3000/api/snippet/language', { language: language });
+        //     promise.then(function (response) {
+        //         window.location.href = '/desktop';
+        //     })
+        // });
+        // $('#sort_by_user').on('submit', function (event) {
+        //     event.preventDefault();
+       
+        //     var username = $('#username').val();
+         
+
+        //     var promise = $.post('http://localhost:3000/api/snippet/username', { username: username });
+        //     promise.then(function (response) {
+        //         window.location.href = '/desktop';
+        //     })
+        // })
+        // $('#sort_by_tag').on('submit', function (event) {
+        //     event.preventDefault();
+       
+        //     var tag = $('#tag').val();
+         
+
+        //     var promise = $.post('http://localhost:3000/api/snippet/tag', { tag: tag });
+        //     promise.then(function (response) {
+        //         window.location.href = '/desktop';
+        //     })
+        // })
+       
+    </script>
+</body>
+
+</html>

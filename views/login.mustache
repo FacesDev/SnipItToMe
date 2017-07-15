@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="./styles.css" />
+</head>
+
+<body>
+    <div class="manage_wrapper">
+    <div class="nav_bar">
+    <a class="nav" href="signup">Sign Up</a>
+   </div>
+
+<div class="manage_gabs_wrapper">
+    <form class="login" id='login_form' method="post" action="./api/login">
+        <input class="create_gab" type="text" id='username_login' name="username" placeholder="Username" />
+        <input class="create_gab" type="password" id='password' name="password" placeholder="Password" />
+        <button class="create_button" type="submit">Submit</button> 
+
+        {{#errors}}
+        <p>{{msg}}</p>
+        {{/errors}}
+    </form>
+</div>
+<script>
+        $('#login_form').on('submit', function (event) {
+            event.preventDefault();
+            var username = $('#username_login').val();
+            var password = $('#password').val();
+
+            var promise = $.post('http://localhost:3000/api/login', { username: username, password: password });
+            promise.then(function (response) {
+                window.location.href = '/desktop';
+            })
+        })
+    </script>
+</body>
+
+</html>

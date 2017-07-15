@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "solderedmachd",
+    "password": null,
+    "database": "Snippets",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "solderedmachd",
+    "password": null,
+    "database": "Snippets",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "solderedmachd",
+    "password": null,
+    "database": "Snippets",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

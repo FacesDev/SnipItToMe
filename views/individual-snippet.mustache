@@ -1,0 +1,20 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <h1>Individual Snippet</h1>
+    <a href="/desktop">Home</a>
+   <div>
+       {{#snippet}}
+        <div>
+            <p>Title: {{title}}</p>
+            <p>Code: {{code}}</p>
+            <p>Note: {{note}}</p>
+            <p>Language: {{language}}</p>
+            <p>Tags:{{tag}}</p>
+        </div>
+        {{/snippet}}
+    </div>
+</body>

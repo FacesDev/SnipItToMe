@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+    <body>
+        <a href="/desktop">Home</a>
+        <h1 class="center-text-large">Selected Snippets</h1>
+        
+        
+        {{#snippet}}
+        <div class="form-wrapper-center">
+        <div class="snippet-box">
+            <p>Title: {{title}}</p>
+            <p>Code: {{code}}</p>
+            <p>Note: {{note}}</p>
+            <p>Language: {{language}}</p>
+            <p>Tags:{{tag}}</p>
+        </div>
+    </div>
+        {{/snippet}}
+    </body>
+
+
+
+</html>
