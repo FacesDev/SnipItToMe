@@ -20,5 +20,9 @@
     "pg": "^6.4.1",
     "sequelize": "^4.3.2",
     "supertest": "^3.0.0"
+  },
+  "engines": {
+    "node": "8.0.0"
   }
+  
 }
