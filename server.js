@@ -4,6 +4,9 @@ const models = require("./models");
 const mustache = require('mustache-express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+
+var MemoryStore = require('session-memory-store')(session);
+
 const expressValidator = require('express-validator');
 const crypto = require('crypto');
 const application = express();
@@ -22,6 +25,7 @@ application.use(session({
     secret: "secretkey",
     saveUninitialized: true,
     resave: false,
+    store: new MemoryStore()
 }));
 
 function hashPassword(password) {
