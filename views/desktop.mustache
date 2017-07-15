@@ -86,7 +86,7 @@
             var language = $('#language').val();
             var tag = $('#tag').val();
 
-            var promise = $.post('http://localhost:3000/api/snippet', { title: title, code: code, note: note, language: language, tag: tag });
+            var promise = $.post('http://frozen-mesa-63680.herokuapp.com/api/snippet', { title: title, code: code, note: note, language: language, tag: tag });
             promise.then(function (response) {
                 window.location.href = '/desktop';
             })

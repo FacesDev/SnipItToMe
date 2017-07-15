@@ -39,7 +39,7 @@
             var password = $('#password').val();
             var confirm = $('#confirm').val();
 
-            var promise = $.post('http://localhost:3000/api/signup', { username: username, password: password, display: display, confirm: confirm });
+            var promise = $.post('http://frozen-mesa-63680.herokuapp.com/api/signup', { username: username, password: password, display: display, confirm: confirm });
             promise.then(function (response) {
                 window.location.href = '/desktop';
             })
